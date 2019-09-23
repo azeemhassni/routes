@@ -90,7 +90,7 @@ class Routes {
 	}
 
 	/**
-	 * @param array $template           A php file to load (ex: 'single.php')
+	 * @param string $template           A php file to load (ex: 'single.php')
 	 * @param array|bool $tparams       An array of data to send to the php file. Inside the php file
 	 *                                  this data can be accessed via:
 	 *                                  global $params;
@@ -124,6 +124,8 @@ class Routes {
 				add_action('template_redirect', function(){
 					global $wp_query;
 					$wp_query->is_404 = false;
+					$query->is_attachment = false;
+					$query->is_page = true;
 				},1);
 			}
 		}
